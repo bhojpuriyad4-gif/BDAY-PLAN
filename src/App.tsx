@@ -16,6 +16,17 @@ import { Level07 } from './levels/Level07';
 import { Level08 } from './levels/Level08';
 import { Level09 } from './levels/Level09';
 import { Level10 } from './levels/Level10';
+import { Level11 } from './levels/Level11';
+import { Level12 } from './levels/Level12';
+import { Level13 } from './levels/Level13';
+import { Level14 } from './levels/Level14';
+import { Level15 } from './levels/Level15';
+import { Level16 } from './levels/Level16';
+import { Level17 } from './levels/Level17';
+import { Level18 } from './levels/Level18';
+import { Level19 } from './levels/Level19';
+import { Level20 } from './levels/Level20';
+import { Level21 } from './levels/Level21';
 import { LevelFuture } from './levels/LevelFuture';
 
 import { BirthdayProgress } from './types';
@@ -71,11 +82,10 @@ export default function App() {
     });
 
     // Advance to next level or return to dashboard
-    if (levelNum < 10) {
+    if (levelNum < 21) {
       setActiveLevel(levelNum + 1);
     } else {
-      setActiveLevel(null);
-      setActiveTab('levels');
+      setActiveLevel(21);
     }
   };
 
@@ -98,6 +108,11 @@ export default function App() {
   const renderActiveView = () => {
     // If a specific level is open
     if (activeLevel !== null) {
+      // Check locking protection
+      if (!progress.unlockedLevels.includes(activeLevel)) {
+        return <LevelFuture levelNumber={activeLevel} onBack={handleBackToDashboard} />;
+      }
+
       switch (activeLevel) {
         case 1:
           return <Level01 onComplete={() => handleLevelComplete(1)} onBack={handleBackToDashboard} />;
@@ -119,6 +134,37 @@ export default function App() {
           return <Level09 onComplete={() => handleLevelComplete(9)} onBack={handleBackToDashboard} />;
         case 10:
           return <Level10 onComplete={() => handleLevelComplete(10)} onBack={handleBackToDashboard} />;
+        case 11:
+          return <Level11 onComplete={() => handleLevelComplete(11)} onBack={handleBackToDashboard} />;
+        case 12:
+          return <Level12 onComplete={() => handleLevelComplete(12)} onBack={handleBackToDashboard} />;
+        case 13:
+          return <Level13 onComplete={() => handleLevelComplete(13)} onBack={handleBackToDashboard} />;
+        case 14:
+          return <Level14 onComplete={() => handleLevelComplete(14)} onBack={handleBackToDashboard} />;
+        case 15:
+          return <Level15 onComplete={() => handleLevelComplete(15)} onBack={handleBackToDashboard} />;
+        case 16:
+          return <Level16 onComplete={() => handleLevelComplete(16)} onBack={handleBackToDashboard} />;
+        case 17:
+          return <Level17 onComplete={() => handleLevelComplete(17)} onBack={handleBackToDashboard} />;
+        case 18:
+          return <Level18 onComplete={() => handleLevelComplete(18)} onBack={handleBackToDashboard} />;
+        case 19:
+          return <Level19 onComplete={() => handleLevelComplete(19)} onBack={handleBackToDashboard} />;
+        case 20:
+          return <Level20 onComplete={() => handleLevelComplete(20)} onBack={handleBackToDashboard} />;
+        case 21:
+          return (
+            <Level21
+              onComplete={() => handleLevelComplete(21)}
+              onBack={handleBackToDashboard}
+              onNavigateToMemories={() => {
+                setActiveLevel(null);
+                setActiveTab('memories');
+              }}
+            />
+          );
         default:
           return <LevelFuture levelNumber={activeLevel} onBack={handleBackToDashboard} />;
       }

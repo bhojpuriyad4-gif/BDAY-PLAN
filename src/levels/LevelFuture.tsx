@@ -21,11 +21,11 @@ export const LevelFuture: React.FC<LevelFutureProps> = ({ levelNumber, onBack })
         </span>
 
         <p className="text-base text-white/90 font-medium mt-3">
-          Levels 11–21 are being prepared for the next special surprise!
+          Complete Level {levelNumber > 1 ? levelNumber - 1 : 1} to unlock this chapter!
         </p>
 
         <p className="text-xs text-[#b9b4c7] mt-2 max-w-xs leading-relaxed">
-          Check back soon or replay earlier levels to rediscover our secret notes and cherished memories.
+          Solve the earlier levels in sequence to reveal our secret notes, starlight wishes, and memories.
         </p>
 
         <button

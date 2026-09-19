@@ -16,6 +16,10 @@
   font-family: 'Caveat', cursive;
 }
 
+.font-comfortaa, .font-script-whisper {
+  font-family: 'Comfortaa', 'Caveat', cursive;
+}
+
 .font-script {
   font-family: 'Sacramento', cursive;
 }
